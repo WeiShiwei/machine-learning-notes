@@ -1,4 +1,4 @@
-# **一、模型定**义
+**一、模型定****义**
 
 Logistic Regression是一种分类方法，用于两分类问题（即输出只有两种）。先找到一个预测函数（**h**），该函数的输出必须是两个值（分别代表两个类别），利用了Sigmoid函数，函数形式为：
 
@@ -28,7 +28,7 @@ Logistic Regression是一种分类方法，用于两分类问题（即输出只�
 
  
 
-# **二、模型参数估计**
+**二、模型参数估****计**
 
 应用极大似然估计法估计模型参数
 
@@ -62,25 +62,37 @@ Logistic Regression是一种分类方法，用于两分类问题（即输出只�
 
  ![https://img-blog.csdn.net/20131113203807453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZG9uZ3Rpbmd6aGl6aQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](file://localhost/Users/weishiwei/Library/Group%20Containers/UBF8T346G9.Office/msoclip1/01/clip_image022.png)
 
-
-
-# 三、Logistic回归多分类
+三、Logistic回归多分类
 
 logistic回归的损失函数改为如下形式：
 
 ![img](file://localhost/Users/weishiwei/Library/Group%20Containers/UBF8T346G9.Office/msoclip1/01/clip_image024.png)![gif.gif](file://localhost/Users/weishiwei/Library/Group%20Containers/UBF8T346G9.Office/msoclip1/01/clip_image026.png)
 
-
-
-# 问题1：为什么是交叉熵损失函数
+问题1：为什么是交叉熵损失函数
 
 ![img](file://localhost/Users/weishiwei/Library/Group%20Containers/UBF8T346G9.Office/msoclip1/01/clip_image028.png)
 
  
 
-  
+ 
 
-# 问题2：为什么是sigmoid函数
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+问题2：为什么是sigmoid函数
 
 逻辑回归是广义线性模型的一种特殊形式，或者说是广义线性模型的一个特例，当我们模型假设服从伯努利分布的情况下，那我们的求解目标或者假设函数就是sigmoid函数。
 
@@ -98,7 +110,33 @@ logistic回归的损失函数改为如下形式：
 
  
 
+ 
 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
 
  
 
