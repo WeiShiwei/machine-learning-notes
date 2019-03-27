@@ -82,7 +82,7 @@ logistic回归的损失函数改为如下形式：
 
 逻辑回归是广义线性模型的一种特殊形式，或者说是广义线性模型的一个特例，当我们模型假设服从伯努利分布的情况下，那我们的求解目标或者假设函数就是sigmoid函数。
 
-![image-20190321163145170](/Users/weishiwei/GitHub/machine-learning-notes/logistics_regression/images/image-20190321163145170.png)
+![image-20190321163145170](./images/image-20190321163145170.png)
 
 
 
