@@ -1,4 +1,18 @@
+TODO
 
+**Vanishing gradient problem** 
+
+**Long Short-Term Memory (LSTM)**
+
+**Gated Recurrent Units (GRU)**
+
+**Is vanishing/exploding gradient just a RNN problem?**
+
+**Bidirectional RNNs**
+
+- BERT (**Bidirectional** Encoder Representations from Transformers) 
+
+**Multi-layer RNNs**
 
 
 
