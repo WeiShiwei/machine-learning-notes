@@ -23,7 +23,66 @@ Transformer的提出解决了上面两个问题，首先它使用了Attention机
 
 
 
+### Attention
+
+Attention model和seq2seq模型紧密联系的
+
+Attention解决了基于encoder-decoder结构下seq2seq模型的信息瓶颈问题。
+
+Attention的核心思想是在decoder的每个时间步，选择与encoder直接连接的方式，专注于source序列相应的部分。
+
+
+
+在seq2seq模型应用attention如下图所示：
+
+1、在decoder里面每个单元的输出前，计算该单元hidden status与encoder各个单元的hidden status计算点积，获得attention分数
+
+2、然后softmax归一化处理获得attention分布
+
+3、attention分布作为权重对encoder中各个单元hidden status求加权和
+
+4、把decoder该单元的attention输出与hidden status，计算输出
+
+
+
+优点是：
+
+-  Attention significantly improves NMT performance
+
+It’s very useful to allow decoder to focus on certain parts of the source
+
+-  Attention solves the bottleneck problem
+
+Attention allows decoder to look directly at source; bypass bottleneck
+
+- Attention helps with vanishing gradient problem 
+- Attention provides some interpretability 
+
+但是缺点是：
+
+1、Attention不能并行化；
+
+2、Attention忽略了输入句子、目标句子之间的关系；
+
+
+
+![attention_1555669497846](./images/attention_1555669497846.jpg)
+
+
+
+
+
+![attention_1555668254026](./images/attention_1555668254026.jpg)
+
+
+
 ### **Self-Attention**
+
+#### **Self-Attention at a High Level**
+
+#### **Self-Attention in Detail**
+
+#### multi-headed机制的self-attention
 
 
 
