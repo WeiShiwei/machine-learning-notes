@@ -2,7 +2,7 @@
 
 ### one to one(Vanilla RNN)
 
-![image-20190322181345419](./images/image-20190322181345419.png)
+###### ![image-20190322181345419](./images/image-20190322181345419.png)
 
 ### one to many
 
