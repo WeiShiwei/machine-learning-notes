@@ -2,7 +2,7 @@
 
 <https://keras.io/layers/recurrent/#lstm>
 
-```
+```python
 keras.layers.LSTM(units, activation='tanh', recurrent_activation='hard_sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', unit_forget_bias=True, kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0, implementation=1, return_sequences=False, return_state=False, go_backwards=False, stateful=False, unroll=False)
 ```
 
@@ -82,7 +82,7 @@ X，
 
 **模型的 Keras 代码：**
 
-```text
+```python
 # define model【Vanilla LSTM】
 
 model = Sequential()
@@ -148,7 +148,7 @@ out_seq： [in_seq1[i]+in_seq2[i] for i in range(len(in_seq1))]
 
 **模型的 Keras 代码：**
 
-```text
+```python
 # define model【Vanilla LSTM】
 model = Sequential()
 model.add(LSTM(50, activation='relu', input_shape=(n_steps, n_features)))
@@ -201,7 +201,7 @@ X，
 
 **模型的 Keras 代码：**
 
-```text
+```python
 # define model【Vanilla LSTM】
 model = Sequential()
 model.add(LSTM(100, activation='relu', return_sequences=True, input_shape=(n_steps_in, n_features)))
@@ -232,3 +232,9 @@ model.add(LSTM(100, activation='relu', return_sequences=True))
 model.add(TimeDistributed(Dense(1)))
 model.compile(optimizer='adam', loss='mse')
 ```
+
+
+
+### Q3-Sequence-to-Sequence Modeling Of  Time Series
+
+![architecture_ts](./images/seq2seq_ts.png)
