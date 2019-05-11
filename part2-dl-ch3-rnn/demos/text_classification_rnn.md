@@ -31,7 +31,7 @@ BATCH_SIZE = 64
 
 
 
-```
+```python
 train_dataset = train_dataset.shuffle(BUFFER_SIZE)
 train_dataset = train_dataset.padded_batch(BATCH_SIZE, train_dataset.output_shapes)
 
@@ -57,10 +57,54 @@ model.compile(loss='binary_crossentropy',
 history = model.fit(train_dataset, epochs=10,
                     validation_data=test_dataset)
 
+
+```
+
+### Train the model
+
+```python
+history = model.fit(train_dataset, epochs=10,
+                    validation_data=test_dataset)
+                    
 test_loss, test_acc = model.evaluate(test_dataset)
 
 print('Test Loss: {}'.format(test_loss))
 print('Test Accuracy: {}'.format(test_acc))
+
+
+```
+
+预测
+
+```python
+def pad_to_size(vec, size):
+  zeros = [0] * (size - len(vec))
+  vec.extend(zeros)
+  return vec
+  
+def sample_predict(sentence, pad):
+  tokenized_sample_pred_text = tokenizer.encode(sample_pred_text)
+
+  if pad:
+    tokenized_sample_pred_text = pad_to_size(tokenized_sample_pred_text, 64)
+
+  predictions = model.predict(tf.expand_dims(tokenized_sample_pred_text, 0))
+
+  return (predictions)
+  
+# predict on a sample text without padding.
+
+sample_pred_text = ('The movie was cool. The animation and the graphics '
+                    'were out of this world. I would recommend this movie.')
+predictions = sample_predict(sample_pred_text, pad=False)
+print (predictions)
+
+# predict on a sample text with padding
+
+sample_pred_text = ('The movie was cool. The animation and the graphics '
+                    'were out of this world. I would recommend this movie.')
+predictions = sample_predict(sample_pred_text, pad=True)
+print (predictions)
 ```
 
 
