@@ -67,9 +67,29 @@ print('Test Accuracy: {}'.format(test_acc))
 
 ### Stack two or more LSTM layers
 
+Keras recurrent layers have two available modes that are controlled by the `return_sequences` constructor argument:
+
+- Return either the full sequences of successive outputs for each timestep (a 3D tensor of shape `(batch_size, timesteps, output_features)`).
+- Return only the last output for each input sequence (a 2D tensor of shape (batch_size, output_features)).
 
 
-### 参考API文档
+
+```python
+model = tf.keras.Sequential([
+    tf.keras.layers.Embedding(tokenizer.vocab_size, 64),
+    tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(
+        64, return_sequences=True)),
+    tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(32)),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid')
+])
+```
+
+**return_sequences**: Boolean. Whether to return the last output in the output sequence, or the full sequence.
+
+
+
+### 参考keras API文档
 
 #### keras.layers.Embedding
 
@@ -106,3 +126,12 @@ model.add(Embedding(1000, 64, input_length=10))
 #### keras.layers.LSTM
 
 <https://keras.io/layers/recurrent/#lstm>
+
+
+
+
+
+### 参考tensorflow官方文档
+
+https://www.tensorflow.org/alpha/tutorials/text/text_classification_rnn?hl=zh-cn
+
