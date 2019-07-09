@@ -14,7 +14,7 @@
 解释：链表中有一个环，其尾部连接到第二个节点。
 ```
 
-![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png)
+![img](./images/circularlinkedlist.png)
 
 **示例 2：**
 
@@ -24,7 +24,7 @@
 解释：链表中有一个环，其尾部连接到第一个节点。
 ```
 
-![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png)
+![img](./images/circularlinkedlist_test2.png)
 
 **示例 3：**
 
@@ -34,7 +34,7 @@
 解释：链表中没有环。
 ```
 
-![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png)
+![img](./images/circularlinkedlist_test3.png)
 
  
 
