@@ -1,6 +1,6 @@
-DBSCAN
+# 一、DBSCAN密度聚类算法
 
-https://zh.wikipedia.org/wiki/DBSCAN
+![1563506836439](F:\src\machine-learning-notes\part1-ch05_Clustering\images\1563506836439.png)
 
 
 
@@ -30,3 +30,30 @@ https://zh.wikipedia.org/wiki/DBSCAN
 3. 如果数据库里的点有不同的密度，而该差异很大，DBSCAN 将不能提供一个好的聚类结果，因为不能选择一个适用于所有聚类的 minPts-ε 参数组合。
 4. 如果没有对资料和比例的足够理解，将很难选择适合的 ε 参数。
 
+
+
+# 二、问题
+
+## 2.1 相关概念
+
+- 邻域
+- 核心对象
+- 密度直达
+- 密度可达
+- 密度相连
+
+# 2.2 算法描述
+
+# 2.3 DBSCAN复杂度
+
+
+
+# 参考
+
+DBSCAN维基百科
+
+https://zh.wikipedia.org/wiki/DBSCAN
+
+DBSCAN密度聚类算法
+
+https://www.cnblogs.com/pinard/p/6208966.html
