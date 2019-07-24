@@ -2,7 +2,7 @@
 
 ## 1.1 神经元结构
 
-![1563960853603](F:\src\machine-learning-notes\part2-dl-ch1-dnn\images\1563960853603.png)
+![1563960853603](./images/1563960853603.png)
 
 **净输入（Net Input）z** ∈ R表示一个神经元所获得的输入信号x 的加权和
 
@@ -16,17 +16,17 @@ a = f(z)
 
 ### 1.2.1 Sigmoid 型激活函数
 
-![1563961038204](F:\src\machine-learning-notes\part2-dl-ch1-dnn\images\1563961038204.png)
+![1563961038204](./images/1563961038204.png)
 
 ### 1.2.2 修正线性单元
 
-![1563961174322](F:\src\machine-learning-notes\part2-dl-ch1-dnn\images\1563961174322.png)
+![1563961174322](./images/1563961174322.png)
 
 # 2. 前馈神经网络结构
 
-![1563957753240](F:\src\machine-learning-notes\part2-dl-ch1-dnn\images\1563957753240.png)
+![1563957753240](./images/1563957753240.png)
 
-![1563957770244](F:\src\machine-learning-notes\part2-dl-ch1-dnn\images\1563957770244.png)
+![1563957770244](./images/1563957770244.png)
 
 # 3. 反向传播
 
@@ -34,7 +34,7 @@ a = f(z)
 
 式4.60是反向传播的迭代计算公式，对于理解梯度消失问题有帮助。
 
-![1563958166319](F:\src\machine-learning-notes\part2-dl-ch1-dnn\images\1563958166319.png)
+![1563958166319](./images/1563958166319.png)
 
 如果熟悉矩阵的导数，BP理解起来就很熟悉
 
@@ -48,7 +48,7 @@ a = f(z)
 
 区别：符号微分的处理对象是数学表达式，而自动微分的处理对象是一个函数或一段程序；
 
-![1563960100872](F:\src\machine-learning-notes\part2-dl-ch1-dnn\images\1563960100872.png)
+![1563960100872](./images/1563960100872.png)
 
 ## 4.2 自动微分
 
@@ -58,11 +58,11 @@ a = f(z)
 
 
 
-![1563959992718](F:\src\machine-learning-notes\part2-dl-ch1-dnn\images\1563959992718.png)
+![1563959992718](./images/1563959992718.png)
 
 图4.8给出了当x = 1,w = 0, b = 0 时复合函数f(x;w, b) 的计算图，其中连边上的红色数字表示前向计算时复合函数中每个变量的实际取值。
 
-![1563960028274](F:\src\machine-learning-notes\part2-dl-ch1-dnn\images\1563960028274.png)
+![1563960028274](./images/1563960028274.png)
 
 ## 4.3 静态计算图和动态计算图
 
@@ -84,7 +84,7 @@ a = f(z)
 
 ## 5.2 梯度消失问题
 
-![1563958790306](F:\src\machine-learning-notes\part2-dl-ch1-dnn\images\1563958790306.png)
+![1563958790306](./images/1563958790306.png)
 
 由于Sigmoid 型函数的饱和性，饱和区的导数更是接近于0。这样，误差经过每一层传递都会不断衰减。当网络层数很深时，梯度就会不停的衰减，甚至消失，使得整个网络很难训练。这就是所谓的梯度消失问题（Vanishing Gradient Problem），也称为梯度弥散问题。
 
