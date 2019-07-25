@@ -136,3 +136,201 @@ class Solution(object):
         
 ```
 
+
+
+# 最长连续序列
+
+给定一个未排序的整数数组，找出最长连续序列的长度。
+
+要求算法的时间复杂度为 *O(n)*。
+
+**示例:**
+
+```
+输入: [100, 4, 200, 1, 3, 2]
+输出: 4
+解释: 最长连续序列是 [1, 2, 3, 4]。它的长度为 4。
+```
+
+
+
+**解法 1（时间复杂度O（ nlogn）空间复杂度O（1））**
+
+思路：先对数组进行排序，然后从前向后遍历排序后的数组并且记录最长连续子数组长度。
+
+```java
+public  int longestcontinueArrays(int arr[])
+    {
+
+        if(arr==null||arr.length==0)
+            return 0;
+        int longest=0;
+        int len=1;
+        Arrays.sort(arr);
+        //对数组进行排序
+        for(int i=0;i<arr.length;i++)
+        {
+            if(i+1<arr.length&&arr[i]+1==arr[i+1])
+            {
+                len++;
+                longest=Math.max(longest, len);
+                //longest 保存当前最长连续数组的长度。
+            }
+            else {
+                len=1;
+                //当不连续时将len=1
+            }
+        }
+        return longest;
+
+    }
+
+```
+
+
+
+**解法2（时间复杂度O（n），空间复杂度O（n））**
+
+1，2，3，4，5
+
+使用 hashmap 来保存数组中已经遍历过的元素，key对应元素的值，value表示该元素所在的连续子数组的长度。当遍历到数组的一个元素时有以下四种情况： 
+1.如果 hashmap 中存在此元素，则遍历下一个元素。 
+2.如果hashmap中不存在元素，则看 hashmap中是否存在此元素的前一个元素，比如说如果遍历到5时，看看hashmap中是否存在 4，如果存在则取该连续子数组的第一个元素，将它value值+1，并将该元素放到hashmap中，value值与第一个元素值相同，都表示该连续子数组的长度。 
+3.如果hashmap中存在的该元素的后一个元素，遍历到5时，hashmap中是否存在 6，将次元素加入到后一个连续的子数组中，并且和2中一样，找到子数组的第一个元素和最后一个元素，将它们的value值更新为子数组的长度。 
+
+总结：也就是用连续数组的第一个元素和最后一个元素保存数组的长度值，插入一个新的元素到hashmap中时当遇到上面的不同情况时，采用不同的方法更新value值。
+
+```java
+public  int longestcontinueArrays(int arr[])
+    {
+        if(arr==null||arr.length==0)
+            return 0;
+        int longest=0;
+        HashMap<Integer, Integer> hashMap=new HashMap<Integer, Integer>();
+        for(int i=0;i<arr.length;i++)
+        {
+        //遍历数组，如果hashmap中不包含次元素，将其放入到hashmap中
+            if(!hashMap.containsKey(arr[i]))
+            {
+                hashMap.put(arr[i],1);
+               //如果hashmap中存在比当前元素小1的元素，则跟上面一样获得连续子数组的第一个元素，进行更新。
+                if(hashMap.containsKey(arr[i]-1))
+                {
+                //合并arr[i]与前面的子数组。
+                    longest=Math.max(longest, merge(hashMap, arr[i]-1, arr[i]));
+                }
+                if(hashMap.containsKey(arr[i]+1))
+                {
+                //合并arr[i]与后面的连续数组。
+                    longest=Math.max(longest, merge(hashMap, arr[i], arr[i]+1));
+                }
+            }
+        }               
+        return longest;
+    }
+
+public  int merge(HashMap<Integer, Integer> hashMap,int less,int more)
+    {
+    //合并连续数组，并且更新数组的第一个元素和最后一个元素的value值为合并后的数组的长度。
+        int left=less-hashMap.get(less)+1;
+        int right=more+hashMap.get(more)-1;
+        int len=right-left+1;
+        hashMap.put(left, len);
+        hashMap.put(right, len);
+        return len;
+    }
+
+```
+
+
+
+# 最长递增子序列(LIS, 编程之美2.16)
+
+序列[1, -1, 2, -3, 4, -5, 6, -7]中，返回最长递增子序列长度为4（如1，2，4，6）
+
+思路分析：
+
+考虑到无后效性，应用动态规划来解决
+
+定义LIS[i]为位置i结束的数组的LIS值，则动态转移方程：
+
+LIS[i+1] = max{1, LIS[j]} , 对于0<=j<=i 并且a[j]<a[i+1]
+
+
+
+
+
+# Partition Equal Subset Sum 分割等和子集【TODO】
+
+https://blog.csdn.net/qq_26410101/article/details/80806463
+
+
+
+# 最长回文子串
+
+[5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+
+给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+
+示例 1：
+
+输入: "babad"
+输出: "bab"
+注意: "aba" 也是一个有效答案。
+示例 2：
+
+输入: "cbbd"
+输出: "bb"
+
+动态规划的方法，我会在下一篇单独来介绍，这里只说明此题的DP代码
+
+ 对于字符串str，假设dp[i,j]=1表示str[i...j]是回文子串，那个必定存在dp[i+1,j-1]=1。这样最长回文子串就能分解成一系列子问题，可以利用动态规划求解了。首先构造状态转移方程
+
+![img](./images/452750-20161030112606812-2106192201.png)
+
+```python
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        n = len(s)
+        if n == 0:
+            return ""
+        
+        if n == 1:
+            return s
+
+        max_length = 0
+        left,right = -1, -1
+
+        dp = []
+        for i in range(0, n):
+            dp.append([0]*n)
+        
+        for j in range(0, n):
+            for i in range(j, -1, -1):
+                if i == j:
+                    dp[i][j] = 1
+                    if max_length < j-i+1:
+                        max_length = j-i+1
+                        left,right = i, j
+                    continue
+                
+                if s[i] == s[j]:
+                    dp[i][j] = 1 if j==i+1 else dp[i+1][j-1]
+                    if dp[i][j] and max_length<j-i+1:
+                        max_length = j-i+1
+                        left,right = i, j
+                else:
+                    dp[i][j] = 0
+
+        return s[left:right+1]
+
+if __name__ == "__main__":
+    # s = "babad"
+    s = "cbbd"
+    print(Solution().longestPalindrome(s))
+```
+
