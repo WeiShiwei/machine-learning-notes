@@ -1,21 +1,19 @@
 
 
+[TOC]
+
 # transfromer的定义
 
 transfromer的网络结构由self-Attenion和Feed Forward Neural Network组成，完全由Attention机制组成；
 
-它抛弃了传统的CNN和RNN
+它抛弃了传统的CNN和RNN。
 
-一个基于Transformer的可训练的神经网络可以通过堆叠Transformer的形式进行搭建
-
-
+一个基于Transformer的可训练的神经网络可以通过**堆叠Transformer的形式**进行搭建。
 
 采用Attention机制的原因是考虑到RNN（或者LSTM，GRU等）的计算限制为是顺序的，也就是说RNN相关算法只能从左向右依次计算或者从右向左依次计算，这种机制带来了两个问题：
 
 1. 时间片 t的计算依赖t-1 时刻的计算结果，这样限制了模型的并行能力；
 2. 顺序计算的过程中信息会丢失，尽管LSTM等门机制的结构一定程度上缓解了长期依赖的问题，但是对于特别长期的依赖现象,LSTM依旧无能为力。
-
-
 
 Transformer的提出解决了上面两个问题，首先它使用了Attention机制，将序列中的任意两个位置之间的距离是缩小为一个常量；其次它不是类似RNN的顺序结构，因此具有更好的并行性，符合现有的GPU框架。
 
@@ -106,12 +104,15 @@ Attention allows decoder to look directly at source; bypass bottleneck
 
 ## **Self-Attention at a High Level**
 
-作为我们想要翻译的输入语句“The animal didn’t cross the street because it was too tired”。句子中"it"指的是什么呢？“it"指的是"street” 还是“animal”？对人来说很简单的问题，但是对算法而言并不简单。
-当模型处理单词“it”时，self-attention允许将“it”和“animal”联系起来。当模型处理每个位置的词时，self-attention允许模型看到句子的其他位置信息作辅助线索来更好地编码当前词。如果你对RNN熟悉，就能想到RNN的隐状态是如何允许之前的词向量来解释合成当前词的解释向量。Transformer使用self-attention来将相关词的理解编码到当前词中。
+​		作为我们想要翻译的输入语句“The animal didn’t cross the street because it was too tired”。句子中"it"指的是什么呢？“it"指的是"street” 还是“animal”？对人来说很简单的问题，但是对算法而言并不简单。
+​		当模型处理单词“it”时，self-attention允许将“it”和“animal”联系起来。当模型处理每个位置的词时，self-attention允许模型看到句子的其他位置信息作辅助线索来更好地编码当前词。如果你对RNN熟悉，就能想到RNN的隐状态是如何允许之前的词向量来解释合成当前词的解释向量。Transformer使用self-attention来将相关词的理解编码到当前词中。
 
 ## **Self-Attention in Detail**
 
 我们先看下如何计算self-attention的向量，再看下如何以矩阵方式计算。
+
+### self-attention向量的计算
+
 **第一步**，根据编码器的输入向量，生成三个向量，比如，对每个词向量，生成query-vec, key-vec, value-vec，生成方法为分别乘以三个矩阵，这些矩阵在训练过程中需要学习。【注意：不是每个词向量独享3个matrix，而是所有输入共享3个转换矩阵；**权重矩阵是基于输入位置的转换矩阵**；有个可以尝试的点，如果每个词独享一个转换矩阵，会不会效果更厉害呢？】
 注意到这些新向量的维度比输入词向量的维度要小（512–>64），并不是必须要小的，是为了让多头attention的计算更稳定。
 
@@ -138,7 +139,7 @@ softmax分值决定着在这个位置，每个词的表达程度（关注度）�
 
 上述就是self-attention的计算过程，生成的向量流入前向网络。在实际应用中，上述计算是以速度更快的矩阵形式进行的。下面我们看下在单词级别的矩阵计算。
 
-#### **Matrix Calculation of Self-Attention**
+### **Self-Attention矩阵形式的计算**
 
 **第一步**，计算query/key/value matrix，将所有输入词向量合并成输入矩阵XX*X*，并且将其分别乘以权重矩阵Wq,Wk,WvW^q, W^k, W^v*W**q*,*W**k*,*W**v*。
 
@@ -151,6 +152,8 @@ softmax分值决定着在这个位置，每个词的表达程度（关注度）�
 ![img](./images/self-attention-matrix-calculation-2.png)
 
 矩阵形式的self-attention计算
+
+
 
 ## multi-headed机制的self-attention
 
@@ -204,7 +207,7 @@ softmax分值决定着在这个位置，每个词的表达程度（关注度）�
 
 # **The Residuals**
 
-编码器结构中值得提出注意的一个细节是，在每个子层中（slef-attention, ffnn），都有残差连接，并且紧跟着[layer-normalization](https://arxiv.org/abs/1607.06450)。
+编码器结构中值得提出注意的一个细节是，在每个子层中（self-attention, ffnn），都有残差连接，并且紧跟着[layer-normalization](https://arxiv.org/abs/1607.06450)。
 
 ![img](./images/transformer_resideual_layer_norm.png)
 
@@ -341,7 +344,5 @@ The Annotated Transformer
 
 
 掘金：Transformer 模型的 PyTorch 实现
-
-b
 
 <https://juejin.im/post/5b9f1af0e51d450e425eb32d>
