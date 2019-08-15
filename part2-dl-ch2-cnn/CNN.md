@@ -148,11 +148,19 @@ model.compile(loss='categorical_crossentropy',
 
 
 
+知乎：卷积神经网络中用1*1 卷积有什么作用或者好处呢？
+
+https://www.zhihu.com/question/56024942
+
+
+
 ## 2、讲一下pooling的作用， 为什么max pooling要更常用？哪些情况下，average pooling比max pooling更合适？
 
 max-pooling的效果更好，虽然max-pooling和average-pooling都对数据做了下采样，但是max-pooling感觉更像是做了特征选择，选出了分类辨识度更好的特征，提供了非线性，根据相关理论，特征提取的误差主要来自两个方面：（1）邻域大小受限造成的估计值方差增大；（2）卷积层参数误差造成估计均值的偏移。一般来说，average-pooling能减小第一种误差，更多的保留图像的背景信息，max-pooling能减小第二种误差，更多的保留纹理信息。average-pooling更强调对整体特征信息进行一层下采样，在减少参数维度的贡献上更大一点，更多的体现在信息的完整传递这个维度上，在一个很大很有代表性的模型中，比如说DenseNet中的模块之间的连接大多采用average-pooling，在减少维度的同时，更有利信息传递到下一个模块进行特征提取。
 
 最大池化避免平均池化的模糊化问题，重叠提升了特征的丰富性。
+
+
 
 ## 3、讲一下AlexNet的具体结构，每层的作用
 

@@ -1,4 +1,28 @@
-### Q1-keras LSTM api 文档中units参数怎么理解？
+# Q- 邱锡鹏：《神经网络与深度学习》
+
+## 1.1 长程依赖问题及改进方案，偏理论角度
+
+## 1.2 基于门控的循环神经网络
+
+### 1.2.1 长短期记忆网络-LSTM
+
+### 1.2.2 门控循环单元网络-GRU
+
+## 1.3 深层循环神经网络
+
+### 1.3.1 堆叠循环神经网络
+
+### 1.3.2 双向循环神经网络
+
+## 1.4 常见的问题
+
+LSTM如何来避免梯度弥散和梯度爆炸？
+
+https://www.zhihu.com/question/34878706
+
+
+
+# Q1-keras LSTM api 文档中units参数怎么理解？
 
 <https://keras.io/layers/recurrent/#lstm>
 
@@ -52,11 +76,11 @@ def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
 
 
 
-### Q2- LSTM 做时间序列预测的模型结构 - Keras 实现
+# Q2- LSTM时间序列预测的模型结构 - Keras 实现
 
 根据问题的输入输出模式划分，来看一下几种时间序列问题所对应的 LSTM 模型结构如何实现。
 
-#### 1. Univariate
+## 1. Univariate
 
 ![img](./images/v2-93cce8941805e07bf43a8865698a0c1d_hd.png)
 
@@ -102,7 +126,7 @@ n_features = 1
 
 
 
-#### 2. Multiple Input
+## 2. Multiple Input
 
 ![img](./images/v2-6f276be6182c2e27658379d02e94a28d_hd.png)
 
@@ -170,7 +194,7 @@ n_features = X.shape[2]
 
 
 
-#### 3. Multi-Step
+## 3. Multi-Step
 
 
 
@@ -235,6 +259,6 @@ model.compile(optimizer='adam', loss='mse')
 
 
 
-### Q3-Sequence-to-Sequence Modeling Of  Time Series
+# Q3-Seq2Seq Modeling Of  Time Series
 
 ![architecture_ts](./images/seq2seq_ts.png)
