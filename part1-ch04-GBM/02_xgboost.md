@@ -183,8 +183,8 @@ gbliner：线性模型
 
 1、objective[默认reg:linear]
 这个参数定义需要被最小化的损失函数。最常用的值有：
-binary:logistic 二分类的逻辑回归，返回预测的概率(不是类别)。
-multi:softmax 使用softmax的多分类器，返回预测的类别(不是概率)。
+binary:**logistic 二分类**的逻辑回归，返回预测的概率(不是类别)。
+multi:**softmax使用softmax的多分类器**，返回预测的类别(不是概率)。
 在这种情况下，你还需要多设一个参数：num_class(类别数目)。
 multi:softprob 和multi:softmax参数一样，但是返回的是每个数据属于各个类别的概率。
 2、eval_metric[默认值取决于objective参数的取值]
